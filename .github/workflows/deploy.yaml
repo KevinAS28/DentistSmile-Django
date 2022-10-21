@@ -1,0 +1,36 @@
+name: Deploy
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    environment: gcp_minimum
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: SSH Using Appleboy
+      uses: appleboy/ssh-action@master
+      env:
+        HOST: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+        PORT: 22
+        PASSWORD: ${{ secrets.PASSWORD }}
+      with:
+        envs: HOST, USERNAME, PASSWORD
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        port: 22
+        password: ${{ secrets.PASSWORD }}
+        script: cd "/home/${USERNAME}/Dentistsmile-Health-PKM" && git pull origin main && python3 deploy.py
+          
+    # - name: SSH using script
+    #   env:
+    #     HOST: ${{ secrets.HOST }}
+    #     USERNAME: ${{ secrets.USERNAME }}
+    #     PORT: ${{ secrets.PORT }}
+    #     PASSWORD: ${{ secrets.PASSWORD }}
+    #   run: |
+    #     sshpass -p "${PASSWORD}" ssh -o StrictHostKeyChecking=no "$USERNAME@$HOST" "cd /home/${USERNAME}/Dentistsmile-Health-PKM && python3 -m pip install -r requirements.txt &&python3 manage.py runserver 0.0.0.0:8000"
+        

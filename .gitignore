@@ -1,0 +1,11 @@
+dentistsmile_backend/secrets.py
+dentistsmile_backend/secret_settings.py
+db.sqlite3
+apiv1/__pycache__
+apiv1/management/__pycache__
+dentistsmile_backend/__pycache__
+token_authentication/__pycache__
+static_dev
+static
+.git.error
+.git.old

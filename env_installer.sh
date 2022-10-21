@@ -1,0 +1,1 @@
+sudo apt install default-libmysqlclient-dev python3-mysqldb python3-pip

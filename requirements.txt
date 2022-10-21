@@ -1,0 +1,7 @@
+Django
+requests
+geopy
+sympy
+mysqlclient
+pandas
+xlsxwriter
